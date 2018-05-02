@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block head %}
+	{% load staticfiles %}
+	<link href={% static 'css/game.css' %} rel="stylesheet">
+{% endblock %}
+{% block content %}
+	<canvas id="myCanvas" width="510" height="510"></canvas>
+	<script type="text/javascript" src={% static 'js/pacman/Pacman.js' %}></script>
+	<script type="text/javascript" src={% static 'js/pacman/Ghost.js' %}></script>
+	<script type="text/javascript" src={% static 'js/pacman/Grid.js' %}></script>
+	<script type="text/javascript" src={% static 'js/pacman/Game.js' %}></script>
+{% endblock %}

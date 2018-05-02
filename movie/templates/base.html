@@ -1,0 +1,44 @@
+<html>
+	<head>
+	    <title>Myweb</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        {% load staticfiles %}
+        <link href={% static 'css/base.css' %} rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        {% block head %}
+        {% endblock %}
+	</head>
+    <body>
+        <div class="container-fluid">
+            <nav id="navdiv" class="navbar navbar-expand-sm bg-light">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url "home" %}>Home</a>
+                    </li>
+                    <li class="nav-item">
+                         <div class="dropdown">
+                         	<a class="btn dropdown-toggle" style="color: DodgerBlue;" type="button" id="dropdown1" data-toggle="dropdown">
+                         		Games
+                         		<span class="caret"></span>
+							</a>
+							<ul id="dropdown" class="dropdown-menu" aria-labelledby="dropdown1">
+							<li><a href={% url "pacman" %} title="PacMan">Pacman</a></li>
+							<li><a href={% url "snake" %} title="Snake">Snake</a></li>
+							<li><a href={% url "space_invader" %} title="Space Invader">Space Invader</a></li>
+							</ul>
+							</div> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href={% url "movie" %}>Movie</a>
+                    </li>
+                </ul>
+            </nav>
+        {% block content %}
+        {% endblock %}
+        </div>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

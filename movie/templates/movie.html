@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block head %}
+    <link href="http://vjs.zencdn.net/6.6.3/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+{% endblock %}
+{% block content %}
+    {% load staticfiles %}
+    {% load hide_ext %}
+    <div class="row" style="margin-top: 10vh; min-height: 70vh;">
+        <div style="overflow: auto;" class="col-md-2">
+            {% if enable_previous %}
+                <div class="card">
+                    <div class="card-body">
+                        <i class="fas fa-angle-left "></i>
+                        <h8 class="card-title"><a href="javascript:history.back(-1);">Previous</a></br></h8>
+                    </div>
+                </div>
+            {% endif %}
+            {% if not found %}
+                {% for e in list %}
+                <div class="card">
+                    <div class="card-body">
+                        <h8 class="card-title"><a href={{e}}>{{e|hide_ext}}</a></br></h8>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="col-md-offset-4 col-md-6 mx-auto">
+	    {% if found %}
+	        <video id="my-video" class="video-js" controls preload="auto" width="640" height="264" data-setup='{"fluid": true}' autoplay>
+                <source src={{path}} type='video/webm'>
+                <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                </p>
+            </video>
+            <script src="http://vjs.zencdn.net/6.6.3/video.js"></script>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

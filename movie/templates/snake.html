@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+	{% load staticfiles %}
+	<link href={% static 'css/game.css' %} rel="stylesheet">
+	<script src={% static 'js/snake/snake.js' %}></script>
+	<script>
+	    document.addEventListener("DOMContentLoaded", function(){
+		    var parentElement = document.getElementById("parent");
+		    var game = new SnakeJS(parentElement, {});
+        }, true);
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div id="parent" class="mx-auto"></div>
+    </div>
+{% endblock %}
